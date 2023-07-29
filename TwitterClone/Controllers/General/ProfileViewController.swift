@@ -9,10 +9,30 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    private var isStatusBarHidden: Bool = true
+    
+    private var statusBarHeight: CGFloat {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            let statusBarHeight = windowScene.windows.first?.safeAreaInsets.top {
+            return statusBarHeight
+        }
+        
+        return 0
+    }
+    
+    private let statusBar: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemBackground
+        view.layer.opacity = 0
+        return view
+    }()
+    
     private let profileTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(TweetTableViewCell.self, forCellReuseIdentifier: TweetTableViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         return tableView
     }()
 
@@ -22,13 +42,29 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .systemBackground
         navigationItem.title = "Profile"
         view.addSubview(profileTableView)
+        view.addSubview(statusBar)
         
         let headerView = ProfileTableViewHeader(frame: CGRect(x: 0, y: 0, width: profileTableView.frame.width, height: 380))
-        
         profileTableView.delegate = self
         profileTableView.dataSource = self
         profileTableView.tableHeaderView = headerView
+        //Ignore SafeArea
+        profileTableView.contentInsetAdjustmentBehavior = .never
+
+        let tabBarHeight = self.tabBarController?.tabBar.frame.size.height ?? 0
+        profileTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: tabBarHeight, right: 0)
+        
         configureConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
     }
     
     private func configureConstraints() {
@@ -39,7 +75,16 @@ class ProfileViewController: UIViewController {
             profileTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ]
         
+        let statusBarConstraints = [
+            statusBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            statusBar.topAnchor.constraint(equalTo: view.topAnchor),
+            statusBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            // > 800 is notch iphone maybe...
+            statusBar.heightAnchor.constraint(equalToConstant: view.bounds.height > 800 ? statusBarHeight : 30 )
+        ]
+        
         NSLayoutConstraint.activate(profileTableViewConstraints)
+        NSLayoutConstraint.activate(statusBarConstraints)
     }
 }
 
@@ -56,5 +101,21 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let yPosition = scrollView.contentOffset.y
+        
+        if yPosition > 150 && isStatusBarHidden {
+            isStatusBarHidden = false
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear) { [weak self] in
+                self?.statusBar.layer.opacity = 1
+            }
+            
+        } else if yPosition < 0 && !isStatusBarHidden{
+            isStatusBarHidden = true
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear) { [weak self] in
+                self?.statusBar.layer.opacity = 0
+            }
+        
+        }
+    }
 }
