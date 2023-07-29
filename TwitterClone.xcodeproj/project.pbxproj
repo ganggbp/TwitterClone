@@ -12,6 +12,10 @@
 		512A2D312A751DC200115AFC /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D302A751DC200115AFC /* MainTabBarViewController.swift */; };
 		512A2D362A751DC300115AFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512A2D352A751DC300115AFC /* Assets.xcassets */; };
 		512A2D392A751DC300115AFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512A2D372A751DC300115AFC /* LaunchScreen.storyboard */; };
+		512A2D432A751F8600115AFC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D422A751F8600115AFC /* HomeViewController.swift */; };
+		512A2D452A751F9200115AFC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D442A751F9200115AFC /* SearchViewController.swift */; };
+		512A2D472A751F9E00115AFC /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D462A751F9E00115AFC /* NotificationViewController.swift */; };
+		512A2D492A751FAE00115AFC /* DirectMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D482A751FAE00115AFC /* DirectMessagesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		512A2D352A751DC300115AFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		512A2D382A751DC300115AFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		512A2D3A2A751DC300115AFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		512A2D422A751F8600115AFC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		512A2D442A751F9200115AFC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		512A2D462A751F9E00115AFC /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		512A2D482A751FAE00115AFC /* DirectMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessagesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,34 @@
 		512A2D2B2A751DC200115AFC /* TwitterClone */ = {
 			isa = PBXGroup;
 			children = (
+				512A2D402A751F6300115AFC /* Controllers */,
 				512A2D2C2A751DC200115AFC /* AppDelegate.swift */,
 				512A2D2E2A751DC200115AFC /* SceneDelegate.swift */,
-				512A2D302A751DC200115AFC /* MainTabBarViewController.swift */,
 				512A2D352A751DC300115AFC /* Assets.xcassets */,
 				512A2D372A751DC300115AFC /* LaunchScreen.storyboard */,
 				512A2D3A2A751DC300115AFC /* Info.plist */,
 			);
 			path = TwitterClone;
+			sourceTree = "<group>";
+		};
+		512A2D402A751F6300115AFC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				512A2D412A751F6E00115AFC /* Core */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		512A2D412A751F6E00115AFC /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				512A2D302A751DC200115AFC /* MainTabBarViewController.swift */,
+				512A2D422A751F8600115AFC /* HomeViewController.swift */,
+				512A2D442A751F9200115AFC /* SearchViewController.swift */,
+				512A2D462A751F9E00115AFC /* NotificationViewController.swift */,
+				512A2D482A751FAE00115AFC /* DirectMessagesViewController.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +162,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				512A2D452A751F9200115AFC /* SearchViewController.swift in Sources */,
 				512A2D312A751DC200115AFC /* MainTabBarViewController.swift in Sources */,
+				512A2D472A751F9E00115AFC /* NotificationViewController.swift in Sources */,
 				512A2D2D2A751DC200115AFC /* AppDelegate.swift in Sources */,
 				512A2D2F2A751DC200115AFC /* SceneDelegate.swift in Sources */,
+				512A2D432A751F8600115AFC /* HomeViewController.swift in Sources */,
+				512A2D492A751FAE00115AFC /* DirectMessagesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
