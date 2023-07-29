@@ -51,8 +51,8 @@ class ProfileViewController: UIViewController {
         //Ignore SafeArea
         profileTableView.contentInsetAdjustmentBehavior = .never
 
-        let tabBarHeight = self.tabBarController?.tabBar.frame.size.height ?? 0
-        profileTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: tabBarHeight, right: 0)
+        let bottomTabBarHeight = self.tabBarController?.tabBar.frame.size.height ?? 0
+        profileTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomTabBarHeight, right: 0)
         
         configureConstraints()
     }
@@ -79,7 +79,6 @@ class ProfileViewController: UIViewController {
             statusBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             statusBar.topAnchor.constraint(equalTo: view.topAnchor),
             statusBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            // > 800 is notch iphone maybe...
             statusBar.heightAnchor.constraint(equalToConstant: statusBarHeight)
         ]
         

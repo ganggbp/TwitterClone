@@ -30,6 +30,7 @@
 		512A2D642A75836A00115AFC /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 512A2D632A75836A00115AFC /* FirebaseStorage */; };
 		512A2D662A75836A00115AFC /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 512A2D652A75836A00115AFC /* FirebaseStorageCombine-Community */; };
 		512A2D692A7585ED00115AFC /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D682A7585ED00115AFC /* OnboardingViewController.swift */; };
+		512A2D6B2A758DFA00115AFC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D6A2A758DFA00115AFC /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		512A2D502A753B4B00115AFC /* ProfileTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewHeader.swift; sourceTree = "<group>"; };
 		512A2D522A757E8200115AFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		512A2D682A7585ED00115AFC /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		512A2D6A2A758DFA00115AFC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				512A2D682A7585ED00115AFC /* OnboardingViewController.swift */,
+				512A2D6A2A758DFA00115AFC /* RegisterViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				512A2D452A751F9200115AFC /* SearchViewController.swift in Sources */,
 				512A2D312A751DC200115AFC /* MainTabBarViewController.swift in Sources */,
 				512A2D472A751F9E00115AFC /* NotificationViewController.swift in Sources */,
+				512A2D6B2A758DFA00115AFC /* RegisterViewController.swift in Sources */,
 				512A2D2D2A751DC200115AFC /* AppDelegate.swift in Sources */,
 				512A2D2F2A751DC200115AFC /* SceneDelegate.swift in Sources */,
 				512A2D432A751F8600115AFC /* HomeViewController.swift in Sources */,
