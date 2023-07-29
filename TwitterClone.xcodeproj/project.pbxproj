@@ -17,6 +17,7 @@
 		512A2D472A751F9E00115AFC /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D462A751F9E00115AFC /* NotificationViewController.swift */; };
 		512A2D492A751FAE00115AFC /* DirectMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D482A751FAE00115AFC /* DirectMessagesViewController.swift */; };
 		512A2D4C2A75246500115AFC /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D4B2A75246500115AFC /* TweetTableViewCell.swift */; };
+		512A2D4F2A7536D700115AFC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D4E2A7536D700115AFC /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		512A2D462A751F9E00115AFC /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		512A2D482A751FAE00115AFC /* DirectMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessagesViewController.swift; sourceTree = "<group>"; };
 		512A2D4B2A75246500115AFC /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
+		512A2D4E2A7536D700115AFC /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		512A2D402A751F6300115AFC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				512A2D4D2A7536C700115AFC /* General */,
 				512A2D412A751F6E00115AFC /* Core */,
 			);
 			path = Controllers;
@@ -101,6 +104,14 @@
 				512A2D4B2A75246500115AFC /* TweetTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		512A2D4D2A7536C700115AFC /* General */ = {
+			isa = PBXGroup;
+			children = (
+				512A2D4E2A7536D700115AFC /* ProfileViewController.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 				512A2D2D2A751DC200115AFC /* AppDelegate.swift in Sources */,
 				512A2D2F2A751DC200115AFC /* SceneDelegate.swift in Sources */,
 				512A2D432A751F8600115AFC /* HomeViewController.swift in Sources */,
+				512A2D4F2A7536D700115AFC /* ProfileViewController.swift in Sources */,
 				512A2D492A751FAE00115AFC /* DirectMessagesViewController.swift in Sources */,
 				512A2D4C2A75246500115AFC /* TweetTableViewCell.swift in Sources */,
 			);
