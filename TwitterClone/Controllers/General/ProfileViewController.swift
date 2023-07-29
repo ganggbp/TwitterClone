@@ -80,7 +80,7 @@ class ProfileViewController: UIViewController {
             statusBar.topAnchor.constraint(equalTo: view.topAnchor),
             statusBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             // > 800 is notch iphone maybe...
-            statusBar.heightAnchor.constraint(equalToConstant: view.bounds.height > 800 ? statusBarHeight : 30 )
+            statusBar.heightAnchor.constraint(equalToConstant: statusBarHeight)
         ]
         
         NSLayoutConstraint.activate(profileTableViewConstraints)
@@ -99,6 +99,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
