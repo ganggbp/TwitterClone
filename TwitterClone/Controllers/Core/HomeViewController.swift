@@ -23,11 +23,6 @@ class HomeViewController: UIViewController {
         let profileImage = UIImage(systemName: "person")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: profileImage, style: .plain, target: self, action: #selector(didTapProfile))
     }
-    
-    @objc private func didTapProfile() {
-        let vc = ProfileViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
 
     private let timelineTableView: UITableView = {
         let tableView = UITableView()
@@ -42,16 +37,17 @@ class HomeViewController: UIViewController {
         timelineTableView.delegate = self
         timelineTableView.dataSource = self
         configureNavigationBar()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "rectangle.portrait.and.arrow.right"),
+            style: .plain,
+            target: self,
+            action: #selector(didTapSignOut)
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if Auth.auth().currentUser == nil {
-            let vc = UINavigationController(rootViewController: OnboardingViewController())
-            vc.modalPresentationStyle = .fullScreen
-            navigationController?.present(vc, animated: false)
-        }
+        handleAuthentication()
     }
     
     override func viewDidLayoutSubviews() {
@@ -59,6 +55,26 @@ class HomeViewController: UIViewController {
         
         timelineTableView.frame = view.frame
     }
+    
+    @objc private func didTapProfile() {
+        let vc = ProfileViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func didTapSignOut() {
+        try? Auth.auth().signOut()
+        handleAuthentication()
+    }
+    
+    private func handleAuthentication() {
+        if Auth.auth().currentUser == nil {
+            let vc = UINavigationController(rootViewController: OnboardingViewController())
+            vc.modalPresentationStyle = .fullScreen
+            navigationController?.present(vc, animated: false)
+        }
+    }
+    
+
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {

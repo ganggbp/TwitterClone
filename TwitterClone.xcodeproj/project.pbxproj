@@ -31,6 +31,9 @@
 		512A2D662A75836A00115AFC /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 512A2D652A75836A00115AFC /* FirebaseStorageCombine-Community */; };
 		512A2D692A7585ED00115AFC /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D682A7585ED00115AFC /* OnboardingViewController.swift */; };
 		512A2D6B2A758DFA00115AFC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D6A2A758DFA00115AFC /* RegisterViewController.swift */; };
+		512A2D6E2A763DE800115AFC /* AuthenticationViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D6D2A763DE800115AFC /* AuthenticationViewViewModel.swift */; };
+		512A2D712A76434700115AFC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D702A76434700115AFC /* AuthManager.swift */; };
+		512A2D732A7655E000115AFC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A2D722A7655E000115AFC /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,9 @@
 		512A2D522A757E8200115AFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		512A2D682A7585ED00115AFC /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		512A2D6A2A758DFA00115AFC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		512A2D6D2A763DE800115AFC /* AuthenticationViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewViewModel.swift; sourceTree = "<group>"; };
+		512A2D702A76434700115AFC /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		512A2D722A7655E000115AFC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,8 @@
 		512A2D2B2A751DC200115AFC /* TwitterClone */ = {
 			isa = PBXGroup;
 			children = (
+				512A2D6F2A76433C00115AFC /* Networking */,
+				512A2D6C2A763D1C00115AFC /* ViewModels */,
 				512A2D4A2A75244D00115AFC /* Views */,
 				512A2D402A751F6300115AFC /* Controllers */,
 				512A2D2C2A751DC200115AFC /* AppDelegate.swift */,
@@ -148,8 +156,25 @@
 			children = (
 				512A2D682A7585ED00115AFC /* OnboardingViewController.swift */,
 				512A2D6A2A758DFA00115AFC /* RegisterViewController.swift */,
+				512A2D722A7655E000115AFC /* LoginViewController.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		512A2D6C2A763D1C00115AFC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				512A2D6D2A763DE800115AFC /* AuthenticationViewViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		512A2D6F2A76433C00115AFC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				512A2D702A76434700115AFC /* AuthManager.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,12 +263,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				512A2D452A751F9200115AFC /* SearchViewController.swift in Sources */,
+				512A2D712A76434700115AFC /* AuthManager.swift in Sources */,
 				512A2D312A751DC200115AFC /* MainTabBarViewController.swift in Sources */,
+				512A2D732A7655E000115AFC /* LoginViewController.swift in Sources */,
 				512A2D472A751F9E00115AFC /* NotificationViewController.swift in Sources */,
 				512A2D6B2A758DFA00115AFC /* RegisterViewController.swift in Sources */,
 				512A2D2D2A751DC200115AFC /* AppDelegate.swift in Sources */,
 				512A2D2F2A751DC200115AFC /* SceneDelegate.swift in Sources */,
 				512A2D432A751F8600115AFC /* HomeViewController.swift in Sources */,
+				512A2D6E2A763DE800115AFC /* AuthenticationViewViewModel.swift in Sources */,
 				512A2D4F2A7536D700115AFC /* ProfileViewController.swift in Sources */,
 				512A2D492A751FAE00115AFC /* DirectMessagesViewController.swift in Sources */,
 				512A2D512A753B4B00115AFC /* ProfileTableViewHeader.swift in Sources */,
