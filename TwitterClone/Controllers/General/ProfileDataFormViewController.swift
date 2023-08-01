@@ -7,9 +7,13 @@
 
 import UIKit
 import PhotosUI
+import Combine
 
 
 class ProfileDataFormViewController: UIViewController {
+    
+    private var viewModel = ProfileDataFormViewViewModel()
+    private var subscriptions: Set<AnyCancellable> = []
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -133,7 +137,39 @@ class ProfileDataFormViewController: UIViewController {
         view.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(didTapToDismiss)))
         
         configureConstraints()
+        submitButton.addTarget(self, action: #selector(didTapSubmit), for: .touchUpInside)
         avatarPlaceholderImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapToUpload)))
+        bindViews()
+    }
+    
+    @objc private func didTapSubmit() {
+        viewModel.uploadAvatar()
+    }
+    
+    @objc private func didUpdateDisplayName() {
+        viewModel.displayName = displayNameTextField.text
+        viewModel.validateUserProfileForm()
+    }
+    
+    @objc private func didUpdateUserName() {
+        viewModel.username = usernameTextField.text
+        viewModel.validateUserProfileForm()
+    }
+
+    private func bindViews() {
+        displayNameTextField.addTarget(self, action: #selector(didUpdateDisplayName), for: .editingChanged)
+        usernameTextField.addTarget(self, action: #selector(didUpdateUserName), for: .editingChanged)
+        viewModel.$isFormValid.sink { [weak self] buttonState in
+            self?.submitButton.isEnabled = buttonState
+        }
+        .store(in: &subscriptions)
+        
+        viewModel.$isOnboardingFinished.sink { [weak self] success in
+            if success {
+                self?.dismiss(animated: true)
+            }
+        }
+        .store(in: &subscriptions)
     }
     
     @objc private func didTapToUpload() {
@@ -208,7 +244,7 @@ class ProfileDataFormViewController: UIViewController {
     }
 }
 
-extension ProfileDataFormViewController: UITextViewDelegate, UITextFieldDelegate {
+extension ProfileDataFormViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         scrollView.setContentOffset(CGPoint(x: 0, y: textView.frame.origin.y - 100), animated: true)
         if textView.textColor == .gray {
@@ -225,6 +261,13 @@ extension ProfileDataFormViewController: UITextViewDelegate, UITextFieldDelegate
         }
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        viewModel.bio = textView.text
+        viewModel.validateUserProfileForm()
+    }
+}
+
+extension ProfileDataFormViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         scrollView.setContentOffset(CGPoint(x: 0, y: textField.frame.origin.y - 100), animated: true)
     }
@@ -244,6 +287,8 @@ extension ProfileDataFormViewController: PHPickerViewControllerDelegate {
                     //since we looping inside a closure and want to update something on mainthread
                     DispatchQueue.main.async {
                         self?.avatarPlaceholderImageView.image = image
+                        self?.viewModel.imageData = image
+                        self?.viewModel.validateUserProfileForm()
                     }
                 }
             }
